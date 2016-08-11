@@ -22,19 +22,21 @@
     //配置用户Key
     [AMapServices sharedServices].apiKey = @"fd2c9e6b4f183f2fc81d814631b2c7ea";
     _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))];
-//    _mapView.delegate = self;
-    
-    [self.view addSubview:_mapView];
+    _mapView.delegate = self;
+
+//    [self.view addSubview:_mapView];
+    self.view = _mapView;
+//地图永久设置
     [_mapView setShowsScale:NO];
     [_mapView setShowsCompass:NO];
     _mapView.minZoomLevel = 10;
     _mapView.maxZoomLevel = 19;
 
     
-    
+
     CGFloat width = self.view.bounds.size.width;
     CGFloat height = self.view.bounds.size.height;
-    
+// 雷达
     UIButton * searchBtn = [[UIButton alloc]initWithFrame:CGRectMake(width - 60, height-60, 55, 55)];
     searchBtn.backgroundColor = [UIColor blackColor];
     
@@ -42,7 +44,7 @@
     
     
     [self.view addSubview:searchBtn];
-    
+// 切换页面
     UIButton * backBtn =[[UIButton alloc]initWithFrame:CGRectMake(width - 60, 5, 55, 55)];
     backBtn.backgroundColor = [UIColor brownColor];
     [backBtn addTarget:self action:@selector(changeView) forControlEvents:(UIControlEventTouchUpInside)];
@@ -51,16 +53,30 @@
     
     
     
-//
+//零状态
     [_mapView setCameraDegree:18];
-    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(39.90923, 116.397428);
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(39.90768703, 116.39752328);
     [_mapView setCenterCoordinate:center animated:YES];
     [_mapView setZoomLevel:16 animated:YES];
     
     
-//
+//标记
+    MAPointAnnotation *pointAnnotation = [[MAPointAnnotation alloc] init];
+    pointAnnotation.coordinate = center;
+//    CLLocationCoordinate2DMake(39.989631, 116.481018);
+    pointAnnotation.title = @"方恒国际";
+    pointAnnotation.subtitle = @"阜通东大街6号";
+//    pointAnnotation
     
     
+    [_mapView addAnnotation:pointAnnotation];
+//    [_mapView setCenterCoordinate:pointAnnotation.coordinate animated:YES];
+    MAPointAnnotation *pointAnnotation1 = [[MAPointAnnotation alloc] init];
+    pointAnnotation1.coordinate = CLLocationCoordinate2DMake(39.90868801, 116.39852416);
+    pointAnnotation1.title = @"方国";
+    pointAnnotation1.subtitle = @"阜通东大街66号";
+    [_mapView addAnnotation:pointAnnotation1];
+
     
 }
 - (void)dosearch
@@ -69,14 +85,37 @@
 }
 - (void)changeView
 {
-    
+    NSLog(@"time to change view");
+//    UIView * view =[[UIView alloc]init];
+//    view.backgroundColor = [UIColor redColor];
+//    self.view = view;
 }
 
 
 
 
 
-
+#pragma mark ***协议***
+- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id <MAAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[MAPointAnnotation class]])
+    {
+        static NSString *pointReuseIndentifier = @"pointReuseIndentifier";
+        MAPinAnnotationView*annotationView = (MAPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndentifier];
+        if (annotationView == nil)
+        {
+            annotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pointReuseIndentifier];
+        }
+        annotationView.image = [UIImage imageNamed:@""];
+        annotationView.canShowCallout= YES;       //设置气泡可以弹出，默认为NO
+        annotationView.animatesDrop = YES;        //设置标注动画显示，默认为NO
+//        annotationView.draggable = YES;        //设置标注可以拖动，默认为NO
+        annotationView.pinColor = MAPinAnnotationColorPurple;
+//        annotationView.centerOffset
+        return annotationView;
+    }
+    return nil;
+}
 
 
 
