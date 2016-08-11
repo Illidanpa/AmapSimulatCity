@@ -26,6 +26,9 @@
 		040FC3051D59FB3800B8A186 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040FC2FD1D59F7EC00B8A186 /* SystemConfiguration.framework */; };
 		040FC3061D59FB4900B8A186 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040FC2FB1D59F7DF00B8A186 /* CoreTelephony.framework */; };
 		040FC3071D59FB5300B8A186 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040FC3031D59F83E00B8A186 /* Security.framework */; };
+		0421C9271D5C2109002AC5D4 /* CustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0421C9261D5C2109002AC5D4 /* CustomCalloutView.m */; };
+		0421C9291D5C2BEE002AC5D4 /* locate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0421C9281D5C2BEE002AC5D4 /* locate.png */; };
+		0421C92B1D5C2C4F002AC5D4 /* poi_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0421C92A1D5C2C4F002AC5D4 /* poi_yellow.png */; };
 		04935F601D5B246B00128A9F /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 04935F5F1D5B246B00128A9F /* AMap.bundle */; };
 		04A06D371D5AC0300068073E /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A06D361D5AC0300068073E /* AMapFoundationKit.framework */; };
 /* End PBXBuildFile section */
@@ -54,6 +57,10 @@
 		040FC2FF1D59F80200B8A186 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		040FC3011D59F83400B8A186 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		040FC3031D59F83E00B8A186 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0421C9251D5C2109002AC5D4 /* CustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutView.h; sourceTree = "<group>"; };
+		0421C9261D5C2109002AC5D4 /* CustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutView.m; sourceTree = "<group>"; };
+		0421C9281D5C2BEE002AC5D4 /* locate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locate.png; sourceTree = "<group>"; };
+		0421C92A1D5C2C4F002AC5D4 /* poi_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = poi_yellow.png; sourceTree = "<group>"; };
 		04935F5F1D5B246B00128A9F /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
 		04A06D361D5AC0300068073E /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapFoundationKit.framework; path = ../../Downloads/new/AMapFoundationKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,10 +110,13 @@
 		040FC2D11D59D4B200B8A186 /* 1 */ = {
 			isa = PBXGroup;
 			children = (
+				0421C9281D5C2BEE002AC5D4 /* locate.png */,
+				0421C92A1D5C2C4F002AC5D4 /* poi_yellow.png */,
 				040FC2D51D59D4B200B8A186 /* AppDelegate.h */,
 				040FC2D61D59D4B200B8A186 /* AppDelegate.m */,
 				040FC2D81D59D4B200B8A186 /* ViewController.h */,
 				040FC2D91D59D4B200B8A186 /* ViewController.m */,
+				0421C9241D5C20C0002AC5D4 /* View */,
 				040FC2DB1D59D4B300B8A186 /* Main.storyboard */,
 				040FC2DE1D59D4B300B8A186 /* Assets.xcassets */,
 				040FC2E01D59D4B300B8A186 /* LaunchScreen.storyboard */,
@@ -122,6 +132,15 @@
 				040FC2D31D59D4B200B8A186 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0421C9241D5C20C0002AC5D4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0421C9251D5C2109002AC5D4 /* CustomCalloutView.h */,
+				0421C9261D5C2109002AC5D4 /* CustomCalloutView.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		04A06D391D5AC4150068073E /* framework */ = {
@@ -203,10 +222,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0421C92B1D5C2C4F002AC5D4 /* poi_yellow.png in Resources */,
 				040FC2E21D59D4B300B8A186 /* LaunchScreen.storyboard in Resources */,
 				040FC2DF1D59D4B300B8A186 /* Assets.xcassets in Resources */,
 				04935F601D5B246B00128A9F /* AMap.bundle in Resources */,
 				040FC2DD1D59D4B300B8A186 /* Main.storyboard in Resources */,
+				0421C9291D5C2BEE002AC5D4 /* locate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0421C9271D5C2109002AC5D4 /* CustomCalloutView.m in Sources */,
 				040FC2DA1D59D4B200B8A186 /* ViewController.m in Sources */,
 				040FC2D71D59D4B200B8A186 /* AppDelegate.m in Sources */,
 				040FC2D41D59D4B200B8A186 /* main.m in Sources */,
