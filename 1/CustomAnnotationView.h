@@ -7,11 +7,8 @@
 //
 
 #import <MAMapKit/MAMapKit.h>
-@protocol CustomAnnotationDelegate <NSObject>
+#import "selectObsverOnly.h"
 
--(void)annotationDidSelect;
-
-@end
 @interface CustomAnnotationView : MAAnnotationView
-@property(nonatomic,weak)id<CustomAnnotationDelegate>delegate;
+@property(nonatomic,strong)selectObsverOnly * ob;
 @end

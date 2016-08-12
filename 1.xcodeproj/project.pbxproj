@@ -29,6 +29,7 @@
 		0421C9291D5C2BEE002AC5D4 /* locate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0421C9281D5C2BEE002AC5D4 /* locate.png */; };
 		0421C92B1D5C2C4F002AC5D4 /* poi_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0421C92A1D5C2C4F002AC5D4 /* poi_yellow.png */; };
 		0421C9341D5D7BA3002AC5D4 /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0421C9331D5D7BA3002AC5D4 /* CustomAnnotationView.m */; };
+		0421C93A1D5DF996002AC5D4 /* selectObsverOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 0421C9391D5DF996002AC5D4 /* selectObsverOnly.m */; };
 		04935F601D5B246B00128A9F /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 04935F5F1D5B246B00128A9F /* AMap.bundle */; };
 		04A06D371D5AC0300068073E /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A06D361D5AC0300068073E /* AMapFoundationKit.framework */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,8 @@
 		0421C92A1D5C2C4F002AC5D4 /* poi_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = poi_yellow.png; sourceTree = "<group>"; };
 		0421C9321D5D7BA3002AC5D4 /* CustomAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotationView.h; sourceTree = "<group>"; };
 		0421C9331D5D7BA3002AC5D4 /* CustomAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
+		0421C9381D5DF996002AC5D4 /* selectObsverOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = selectObsverOnly.h; sourceTree = "<group>"; };
+		0421C9391D5DF996002AC5D4 /* selectObsverOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = selectObsverOnly.m; sourceTree = "<group>"; };
 		04935F5F1D5B246B00128A9F /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
 		04A06D361D5AC0300068073E /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapFoundationKit.framework; path = ../../Downloads/new/AMapFoundationKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +121,8 @@
 				040FC2D91D59D4B200B8A186 /* ViewController.m */,
 				0421C9321D5D7BA3002AC5D4 /* CustomAnnotationView.h */,
 				0421C9331D5D7BA3002AC5D4 /* CustomAnnotationView.m */,
+				0421C9381D5DF996002AC5D4 /* selectObsverOnly.h */,
+				0421C9391D5DF996002AC5D4 /* selectObsverOnly.m */,
 				040FC2DB1D59D4B300B8A186 /* Main.storyboard */,
 				040FC2DE1D59D4B300B8A186 /* Assets.xcassets */,
 				040FC2E01D59D4B300B8A186 /* LaunchScreen.storyboard */,
@@ -231,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				040FC2DA1D59D4B200B8A186 /* ViewController.m in Sources */,
+				0421C93A1D5DF996002AC5D4 /* selectObsverOnly.m in Sources */,
 				040FC2D71D59D4B200B8A186 /* AppDelegate.m in Sources */,
 				0421C9341D5D7BA3002AC5D4 /* CustomAnnotationView.m in Sources */,
 				040FC2D41D59D4B200B8A186 /* main.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "CustomAnnotationView.h"
 
+
 @implementation CustomAnnotationView
 
 /*
@@ -17,6 +18,13 @@
     // Drawing code
 }
 */
+- (selectObsverOnly *)ob
+{
+    if (!_ob) {
+        _ob = [selectObsverOnly shareSelectObsver];
+    }
+    return _ob;
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     if (self.selected == selected)
@@ -31,10 +39,12 @@
             //信息页面
             //
             NSLog(@"select");
-            [self.delegate annotationDidSelect];
+            NSString * title = self.annotation.title;
+            self.ob.title =title;
+            NSLog(@"");
             
         }
-            
+
     }
     else
     {

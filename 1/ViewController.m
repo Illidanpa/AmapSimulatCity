@@ -9,12 +9,12 @@
 #import "ViewController.h"
 #import <MAMapKit/MAMapKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
-//#import "AMapSearchNeighbor.h"
 #import <AMapSearchKit/AMapSearchKit.h>
 #import "CustomAnnotationView.h"
 
+#import "selectObsverOnly.h"
 
-@interface ViewController ()<MAMapViewDelegate,AMapSearchDelegate,CustomAnnotationDelegate>
+@interface ViewController ()<MAMapViewDelegate,AMapSearchDelegate,selectedDelegate>
 {
     MAMapView * _mapView;
     AMapSearchAPI *_search;
@@ -24,7 +24,7 @@
 @property(nonatomic,strong)MAPointAnnotation * point1;
 @property(nonatomic,strong)MAPointAnnotation * point2;
 @property(nonatomic,strong)MAPointAnnotation * point3;
-@property(nonatomic,strong)CustomAnnotationView * annotationView;
+@property(nonatomic,strong)selectObsverOnly * ob;
 
 @property(nonatomic,strong)NSArray * allLocation;
 
@@ -41,6 +41,8 @@
     _search = [[AMapSearchAPI alloc] init];
     _search.delegate = self;
 
+    self.ob = [selectObsverOnly shareSelectObsver];
+    self.ob.delegate = self;
 
 //    [self.view addSubview:_mapView];
     self.view = _mapView;
@@ -152,25 +154,24 @@
 
     
     NSString * types =[[arr[9] stringByAppendingString:arr[20]] stringByAppendingString:arr[5]];
-    
-    
+        
     self.request.types = types;
-    
     
     self.request.radius = 200;
     [_search AMapPOIAroundSearch: self.request];
-    
-    
-    
-//    [_mapView setCenterCoordinate:CLLocationCoordinate2DMake(39.990459, 116.481476) animated:YES];
-
-    
 
 }
 - (void)changeView
 {
     NSLog(@"time to change view");
 //    [_mapView removeAnnotation:self.point1];
+//    selectObsverOnly * ob1 = [selectObsverOnly shareSelectObsver];
+//    selectObsverOnly * ob2 = [selectObsverOnly shareSelectObsver];
+//    if (ob1 == ob2) {
+//        NSLog(@"1");
+//    }else
+//        NSLog(@"0");
+//    NSLog(@"");
 
 }
 
@@ -182,17 +183,16 @@
     if ([annotation isKindOfClass:[MAPointAnnotation class]])
     {
         static NSString *pointReuseIndentifier = @"pointReuseIndentifier";
-        self.annotationView = (CustomAnnotationView * )[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndentifier];
-        self.annotationView.delegate = self;
-        if (self.annotationView == nil)
+        CustomAnnotationView * annotationView = (CustomAnnotationView * )[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndentifier];
+        if (annotationView == nil)
         {
-            self.annotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pointReuseIndentifier];
+            annotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pointReuseIndentifier];
         }
         NSString * title =  annotation.subtitle;
         //图片 与 有关
-        self.annotationView.image = [UIImage imageNamed:@"poi_yellow"];
+        annotationView.image = [UIImage imageNamed:@"poi_yellow"];
 
-        return self.annotationView;
+        return annotationView;
     }
     return nil;
 }
@@ -223,15 +223,16 @@
     [self addAnnotation];
 }
 
-- (void)annotationDidSelect
+- (void)annotationDidSelectWithTitle:(NSString *)title
 {
-    if (self.point1.title == nil) {
+    
+    if (self.point1.title == title) {
         [_mapView removeAnnotation:self.point1];
     }
-    if (self.point2.title == nil) {
+    if (self.point2.title == title) {
         [_mapView removeAnnotation:self.point2];
     }
-    if (self.point3.title == nil) {
+    if (self.point3.title == title) {
         [_mapView removeAnnotation:self.point3];
     }
 }
